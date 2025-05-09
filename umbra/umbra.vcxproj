@@ -160,6 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParticleInitData.h" />
     <ClCompile Include="Umbra\Actors\Actor.cpp" />
     <ClCompile Include="Umbra\Actors\ActorTransform.cpp" />
     <ClCompile Include="Umbra\Actors\ActorWorld.cpp" />
@@ -172,7 +173,9 @@
     <ClCompile Include="Umbra\Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ParticleRenderData.h" />
+    <ClInclude Include="ColorPair.h" />
+    <ClInclude Include="FloatPair.h" />
+    <ClInclude Include="ParticleData.h" />
     <ClInclude Include="Umbra\Actors\Actor.h" />
     <ClInclude Include="Umbra\Actors\ActorTransform.h" />
     <ClInclude Include="Umbra\Actors\ActorWorld.h" />
@@ -183,6 +186,10 @@
     <ClInclude Include="Umbra\Misc\Particle.h" />
     <ClInclude Include="Umbra\Misc\ParticleSystem.h" />
     <ClInclude Include="Umbra\Screen.h" />
+    <ClInclude Include="Vec2Pair.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Umbra\Textures\Tex_DefaultParticle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

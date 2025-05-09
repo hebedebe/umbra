@@ -78,6 +78,9 @@
     <ClCompile Include="Umbra\Misc\ParticleSystem.cpp">
       <Filter>Umbra\Source Files\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleInitData.h">
+      <Filter>Umbra\Header Files\Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Umbra\Application.h">
@@ -110,8 +113,22 @@
     <ClInclude Include="Umbra\Misc\ParticleSystem.h">
       <Filter>Umbra\Header Files\Misc</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleRenderData.h">
+    <ClInclude Include="ParticleData.h">
       <Filter>Umbra\Header Files\Misc</Filter>
     </ClInclude>
+    <ClInclude Include="Vec2Pair.h">
+      <Filter>Umbra\Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPair.h">
+      <Filter>Umbra\Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatPair.h">
+      <Filter>Umbra\Header Files\Misc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Umbra\Textures\Tex_DefaultParticle.png">
+      <Filter>Umbra\Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
