@@ -1,12 +1,18 @@
 #pragma once
+#include "ActorTransform.h"
+
 class Actor
 {
 public:
-	Actor();
-	~Actor();
+	ActorTransform transform;
 
 public:
-	void Tick(dt);
-	void Render();
+	Actor();
+	Actor(ActorTransform transform);
+	virtual ~Actor();
+
+public:
+	virtual void Tick(float dt);
+	virtual void Render();
 };
 

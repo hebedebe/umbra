@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include <ctime>
+#include <iostream>
+
 #include "Screen.h"
 
 Screen* Application::m_screen = nullptr;
@@ -11,7 +14,8 @@ Screen* Application::GetScreen()
 
 Application::Application()
 {
-	m_screen = new Screen();
+	m_screen = new Screen(); // create a screen (this comment explains that this line creates a screen)
+	srand(time(nullptr)); // initialise random
 }
 
 Application::~Application()
@@ -31,6 +35,8 @@ int Application::Run()
 
 	while (!WindowShouldClose())
 	{
+		float dt = GetFrameTime();
+
 		m_screen->NewFrame();
 
 		//tings go here

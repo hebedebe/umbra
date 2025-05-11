@@ -3,7 +3,7 @@
 #include <raylib/raylib.h>
 
 struct ParticleData {
-	Vector2 pos;
+	Vector2 pos; //replace raylibs vectors with mathlib vec2
 	Vector2 vel;
 	Vector2 accel;
 
