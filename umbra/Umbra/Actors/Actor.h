@@ -12,7 +12,14 @@ public:
 	virtual ~Actor();
 
 public:
-	virtual void Tick(float dt);
+	virtual void Tick(const float dt);
 	virtual void Render();
+
+	void SetActive();
+	void SetInactive();
+	bool Active();
+
+protected:
+	bool m_active = true;
 };
 
