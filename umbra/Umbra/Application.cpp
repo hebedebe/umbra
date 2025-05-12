@@ -8,6 +8,7 @@
 #include "Screen.h"
 #include "Misc/ParticleEmitter.h"
 #include "Misc/ParticleSystem.h"
+#include "Misc/ParticleAttributeModifier.h"
 
 Screen* Application::m_screen = nullptr;
 
@@ -50,11 +51,13 @@ int Application::Run()
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			RadialParticleEmitter* emitter = new RadialParticleEmitter(ActorTransform{ GetMousePosition() }, particleSystem);
-			emitter->emissionAngles = { 0, 360 };
-			emitter->emissionVelocities = { 10, 80 };
+			emitter->emissionAngles = { 0, 2*PI };
+			emitter->emissionVelocities = { 200, 1000 };
 			emitter->emissionTimer = 0.0f;
 			emitter->particlesPerEmission = 1;
-			emitter->targetTexture = particleTexture;
+			emitter->attributeModifiers.emplace_back(new ScaleChangeAttributeRandomiser(-1.f, -0.5f));
+			emitter->attributeModifiers.emplace_back(new ScaleAttributeRandomiser(0.1f, 0.2f));
+			emitter->attributeModifiers.emplace_back(new TextureAttributeModifier(&particleTexture));
 			actors.emplace_back(emitter);
 		}
 

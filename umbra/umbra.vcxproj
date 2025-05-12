@@ -168,6 +168,7 @@
     <ClCompile Include="Umbra\Levels\Level.cpp" />
     <ClCompile Include="Umbra\Levels\LevelManager.cpp" />
     <ClCompile Include="Umbra\Misc\Particle.cpp" />
+    <ClCompile Include="Umbra\Misc\ParticleAttributeModifier.cpp" />
     <ClCompile Include="Umbra\Misc\ParticleEmitter.cpp" />
     <ClCompile Include="Umbra\Misc\ParticleSystem.cpp" />
     <ClCompile Include="Umbra\Screen.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Umbra\Levels\Level.h" />
     <ClInclude Include="Umbra\Levels\LevelManager.h" />
     <ClInclude Include="Umbra\Misc\Particle.h" />
+    <ClInclude Include="Umbra\Misc\ParticleAttributeModifier.h" />
     <ClInclude Include="Umbra\Misc\ParticleData.h" />
     <ClInclude Include="Umbra\Misc\ParticleEmitter.h" />
     <ClInclude Include="Umbra\Misc\ParticleSystem.h" />

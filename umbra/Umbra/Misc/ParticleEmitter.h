@@ -1,10 +1,13 @@
 #pragma once
 #include <utility>
+#include <vector>
 
+//#include "ParticleAttributeModifier.h"
 #include "Umbra/Actors/Actor.h"
 
 struct ParticleData;
 class ParticleSystem;
+class ParticleAttributeModifier;
 
 class ParticleEmitter : public Actor
 {
@@ -13,7 +16,7 @@ class ParticleEmitter : public Actor
 public:
 	float emissionTimer = 1;
 	int particlesPerEmission = 1;
-	Texture targetTexture;
+	std::vector<ParticleAttributeModifier*> attributeModifiers;
 
 public:
 	ParticleEmitter(ActorTransform transform, ParticleSystem* particleSystem);

@@ -81,6 +81,9 @@
     <ClCompile Include="Umbra\Misc\ParticleEmitter.cpp">
       <Filter>Umbra\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Umbra\Misc\ParticleAttributeModifier.cpp">
+      <Filter>Umbra\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Umbra\Application.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="ParticleShortcuts.h">
       <Filter>Umbra\Header Files\FX</Filter>
+    </ClInclude>
+    <ClInclude Include="Umbra\Misc\ParticleAttributeModifier.h">
+      <Filter>Umbra\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

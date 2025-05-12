@@ -6,20 +6,29 @@
 #include "Particle.h"
 #include "ParticleSystem.h"
 #include "ParticleData.h"
+#include "ParticleAttributeModifier.h"
 
 ParticleEmitter::ParticleEmitter(ActorTransform transform, ParticleSystem* particleSystem)
 	:m_particleSystem(particleSystem)
 {
+	attributeModifiers = {};
 	this->transform = transform;
 }
 
 ParticleEmitter::~ParticleEmitter()
 {
-	//delete targetTexture;
+	for (ParticleAttributeModifier* attributeModifier : attributeModifiers)
+	{
+		delete attributeModifier;
+	}
 }
 
 void ParticleEmitter::SpawnParticle(ParticleData data)
 {
+	for (ParticleAttributeModifier* attributeModifier : attributeModifiers)
+	{
+		attributeModifier->Modify(data);
+	}
 	m_particleSystem->m_particles.emplace_back(new Particle{data});
 }
 
@@ -49,7 +58,7 @@ void ParticleEmitter::Render()
 	DrawCircleV(transform.position, 3, YELLOW);
 }
 
-float random_float(float min, float max) { // put this in mathlib later
+float random_floattwo(float min, float max) { // put this in mathlib later
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_real_distribution<> dis(min, max);
@@ -65,15 +74,13 @@ void RadialParticleEmitter::Emit()
 {
 	ParticleData particleData;
 
-	float angle = random_float(emissionAngles.first, emissionAngles.second);
-	float speed = random_float(emissionVelocities.first, emissionVelocities.second);
+	float angle = random_floattwo(emissionAngles.first, emissionAngles.second);
+	float speed = random_floattwo(emissionVelocities.first, emissionVelocities.second);
 
 	Vector2 velocity = Vector2Multiply({cosf(angle), sinf(angle)}, {speed, speed});
 
 	particleData.pos = transform.position;
 	particleData.vel = velocity;
-
-	particleData.texture = targetTexture;
 
 	SpawnParticle(particleData);
 }

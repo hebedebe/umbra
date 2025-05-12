@@ -41,7 +41,7 @@ void Particle::Render()
 {
 	Actor::Render();
 
-	DrawTextureEx(TEX, GetRenderPosition(), ROT, SCALE, COLOR);
+	DrawTextureEx(*TEX, GetRenderPosition(), ROT, SCALE, COLOR);
 	//DrawTextureV(TEX, POS, COLOR);
 	//DrawCircleV(POS, SCALE * 3, COLOR);
 }
@@ -55,7 +55,7 @@ Vector2 Particle::GetRenderPosition()
 {
 	return
 	{
-		POS.x - ((TEX.width * SCALE) / 2),
-		POS.y - ((TEX.height * SCALE) / 2)
+		POS.x - ((TEX->width * SCALE) / 2),
+		POS.y - ((TEX->height * SCALE) / 2)
 	};
 }

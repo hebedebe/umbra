@@ -23,5 +23,5 @@ struct ParticleData {
 	Color targetColor = WHITE; // needs implementing
 	float colorLerpSpeed = 0;
 
-	Texture texture; //probably replace with sprite later (to support animations etc)
+	Texture* texture=nullptr; //probably replace with sprite later (to support animations etc)
 };
