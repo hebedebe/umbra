@@ -12,6 +12,7 @@ public:
 
 public:
 	void Render(Vector2 pos, float rotation, float scale=1, Color color=WHITE) const;
+	void RenderSpritesheet(Vector2 pos, float rotation, float scale, Color color) const;
 
 private:
 	std::vector<Texture> m_textures;

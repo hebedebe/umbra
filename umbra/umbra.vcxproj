@@ -172,6 +172,7 @@
     <ClCompile Include="Umbra\Misc\ParticleEmitter.cpp" />
     <ClCompile Include="Umbra\Misc\ParticleSystem.cpp" />
     <ClCompile Include="Umbra\Misc\SpriteStack.cpp" />
+    <ClCompile Include="Umbra\RenderUtils.cpp" />
     <ClCompile Include="Umbra\Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +190,7 @@
     <ClInclude Include="Umbra\Misc\ParticleEmitter.h" />
     <ClInclude Include="Umbra\Misc\ParticleSystem.h" />
     <ClInclude Include="Umbra\Misc\SpriteStack.h" />
+    <ClInclude Include="Umbra\RenderUtils.h" />
     <ClInclude Include="Umbra\Screen.h" />
   </ItemGroup>
   <ItemGroup>
