@@ -39,24 +39,10 @@ int Application::Run()
 	}
 
 	std::vector<Actor*> actors;
-	ParticleSystem* particleSystem = new ParticleSystem();
-	actors.emplace_back(particleSystem);
-
-	Texture particleTexture = LoadTexture("./Umbra/Textures/Tex_DefaultParticle.png");
 
 	while (!WindowShouldClose())
 	{
 		float dt = GetFrameTime();
-
-		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-		{
-			RadialParticleEmitter* emitter = new RadialParticleEmitter(ActorTransform{ GetMousePosition() }, particleSystem);
-			emitter->SetLifeTime(1);
-			emitter->attributeModifiers.emplace_back(new ScaleChangeAttributeRandomiser(-1.f, -0.5f));
-			emitter->attributeModifiers.emplace_back(new ScaleAttributeRandomiser(0.1f, 0.2f));
-			emitter->attributeModifiers.emplace_back(new TextureAttributeModifier(&particleTexture));
-			actors.emplace_back(emitter);
-		}
 
 		for (int i = 0; i < actors.size();)
 		{
