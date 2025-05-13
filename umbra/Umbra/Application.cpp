@@ -52,9 +52,9 @@ int Application::Run()
 			carSprites,
 			-3
 		},
-		4,
-		4,
-		360*8,
+		4000,
+		6,
+		360*10,
 		10
 	};
 	car->transform.position = { 400, 400 };
@@ -66,9 +66,12 @@ int Application::Run()
 	pEmitter->emissionAngles = { 30, 50 };
 	pEmitter->particlesPerEmission = 1;
 	pEmitter->emissionTimer = 0.002f;
-	pEmitter->attributeModifiers.emplace_back(new TextureAttributeModifier(&particleTex));
-	pEmitter->attributeModifiers.emplace_back(new ScaleAttributeRandomiser(0.05f, 0.1f));
-	pEmitter->attributeModifiers.emplace_back(new ScaleChangeAttributeRandomiser(-1.f, -0.05f));
+	pEmitter->AddAttribute(new TextureAttributeModifier(&particleTex));
+	pEmitter->AddAttribute(new ScaleAttributeRandomiser(0.05f, 0.1f));
+	pEmitter->AddAttribute(new ScaleChangeAttributeRandomiser(-1.f, -0.05f));
+	pEmitter->AddAttribute(new ColorAttributeRandomiser(GRAY, BLACK));
+	pEmitter->AddAttribute(new ColorLerpSpeedAttributeRandomiser(0, 10));
+	pEmitter->AddAttribute(new TargetColorAttributeRandomiser(Color{255,255,255,0}, Color{ 255,255,255,0 }));
 
 	actors.emplace_back(pSystem);
 	actors.emplace_back(pEmitter);

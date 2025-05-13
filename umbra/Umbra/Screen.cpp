@@ -44,9 +44,10 @@ void Screen::SetClearColor(Color newClearColor)
 }
 
 Screen::Screen()
-	:m_width{ 800 }, m_height{ 800 }, m_title{ "Umbra Application" }, m_clearColor{ RAYWHITE },
+	:m_width{ 800 }, m_height{ 600 }, m_title{ "Umbra Application" }, m_clearColor{ RAYWHITE },
 	m_isUsingAudio{ false }
 {
+	SetTargetFPS(120);
 }
 
 Screen::~Screen() = default;
@@ -54,6 +55,8 @@ Screen::~Screen() = default;
 bool Screen::Open(bool initialiseAudio)
 {
 	m_isUsingAudio = initialiseAudio;
+
+	//SetConfigFlags(FLAG_FULLSCREEN_MODE);
 
 	InitWindow(m_width, m_height, m_title.c_str());
 

@@ -73,5 +73,15 @@ void ScaleChangeAttributeRandomiser::EditParticleData(ParticleData& data)
 
 void ColorLerpSpeedAttributeRandomiser::EditParticleData(ParticleData& data)
 {
-	data.scale = random_float(m_a, m_b);
+	data.colorLerpSpeed = random_float(m_a, m_b);
+}
+
+void ColorAttributeRandomiser::EditParticleData(ParticleData& data)
+{
+	data.color = ColorLerp(m_a, m_b, random_float(0, 1));
+}
+
+void TargetColorAttributeRandomiser::EditParticleData(ParticleData& data)
+{
+	data.targetColor = ColorLerp(m_a, m_b, random_float(0, 1));
 }

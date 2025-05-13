@@ -14,8 +14,8 @@ void Car::Tick(const float dt)
 {
 	Actor::Tick(dt);
 
-	float forward = (IsKeyDown(KEY_S) - IsKeyDown(KEY_W)) * -m_accel;
-	float turn = (IsKeyDown(KEY_D) - IsKeyDown(KEY_A)) * m_rotAccel;
+	float forward = (IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)) * -m_accel;
+	float turn = (IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT)) * m_rotAccel;
 
 	m_rotationVel += turn * dt;
 
@@ -26,7 +26,7 @@ void Car::Tick(const float dt)
 	m_velocity *= 1 - m_drag * dt;
 	m_velocity += vel * dt;
 
-	transform.position += m_velocity;
+	transform.position += m_velocity * dt;
 
 	if (transform.position.x > 800)
 	{
@@ -36,13 +36,13 @@ void Car::Tick(const float dt)
 		transform.position.x = 800;
 	}
 
-	if (transform.position.y > 800)
+	if (transform.position.y > 600)
 	{
 		transform.position.y = 0;
 	}
 	else if (transform.position.y < 0)
 	{
-		transform.position.y = 800;
+		transform.position.y = 600;
 	}
 }
 

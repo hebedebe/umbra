@@ -24,6 +24,8 @@ void Particle::Tick(const float dt)
 {
 	Actor::Tick(dt);
 
+	m_colorLerp += m_data.colorLerpSpeed * dt;
+
 	Vector2 dtVec{ dt, dt };
 
 	VEL = Vector2Add(VEL, Vector2Multiply(ACCEL, dtVec)); // substitute with mathlib stuff later
@@ -41,7 +43,7 @@ void Particle::Render()
 {
 	Actor::Render();
 
-	DrawTextureEx(*TEX, GetRenderPosition(), ROT, SCALE, COLOR);
+	DrawTextureEx(*TEX, GetRenderPosition(), ROT, SCALE, GetCurrentColor());
 	//DrawTextureV(TEX, POS, COLOR);
 	//DrawCircleV(POS, SCALE * 3, COLOR);
 }
@@ -58,4 +60,9 @@ Vector2 Particle::GetRenderPosition()
 		POS.x - ((TEX->width * SCALE) / 2),
 		POS.y - ((TEX->height * SCALE) / 2)
 	};
+}
+
+Color Particle::GetCurrentColor()
+{
+	return ColorLerp(m_data.color, m_data.targetColor, m_colorLerp);
 }

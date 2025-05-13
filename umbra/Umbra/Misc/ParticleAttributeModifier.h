@@ -135,4 +135,36 @@ protected:
 	void EditParticleData(ParticleData& data) override;
 };
 
+class ColorAttributeRandomiser : public ParticleAttributeModifier
+{
+public:
+	ColorAttributeRandomiser(Color a, Color b)
+		: m_a(a), m_b(b)
+	{
+	}
+
+protected:
+	Color m_a;
+	Color m_b;
+
+protected:
+	void EditParticleData(ParticleData& data) override;
+};
+
+class TargetColorAttributeRandomiser : public ParticleAttributeModifier
+{
+public:
+	TargetColorAttributeRandomiser(Color a, Color b)
+		: m_a(a), m_b(b)
+	{
+	}
+
+protected:
+	Color m_a;
+	Color m_b;
+
+protected:
+	void EditParticleData(ParticleData& data) override;
+};
+
 

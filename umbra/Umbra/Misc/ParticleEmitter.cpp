@@ -66,6 +66,11 @@ void ParticleEmitter::Render()
 	DrawCircleV(transform.position, 3, YELLOW);
 }
 
+void ParticleEmitter::AddAttribute(ParticleAttributeModifier* attribute)
+{
+	attributeModifiers.emplace_back(attribute);
+}
+
 void ParticleEmitter::SetLifeTime(float lifetime)
 {
 	m_lifetime = lifetime;

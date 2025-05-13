@@ -29,6 +29,7 @@ public:
 	void Tick(float dt) override;
 	void Render() override;
 
+	void AddAttribute(ParticleAttributeModifier* attribute);
 	void SetLifeTime(float lifetime);
 
 protected:

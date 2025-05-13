@@ -19,8 +19,11 @@ public:
 	bool Alive();
 
 	Vector2 GetRenderPosition();
+	Color GetCurrentColor();
 
 protected:
 	ParticleData m_data;
+
+	float m_colorLerp;
 };
 
