@@ -9,6 +9,7 @@
 #include "Misc/ParticleEmitter.h"
 #include "Misc/ParticleSystem.h"
 #include "Misc/ParticleAttributeModifier.h"
+#include "Misc/SpriteStack.h"
 
 Screen* Application::m_screen = nullptr;
 
@@ -44,7 +45,8 @@ int Application::Run()
 	{
 		float dt = GetFrameTime();
 
-		for (int i = 0; i < actors.size();)
+		// tick all the actors and delete and erase them if they're marked for deletion
+		for (size_t i = 0; i < actors.size();)
 		{
 			Actor* actor = actors[i];
 			actor->Tick(dt);
@@ -59,16 +61,20 @@ int Application::Run()
 
 		m_screen->NewFrame();
 
+		// render all the actors
 		for (auto actor : actors)
 		{
 			actor->Render();
 		}
 
+		// debug info
 		DrawText(std::format("FPS: {}", GetFPS()).c_str(), 20, 20, 25, BLACK);
 		DrawText(std::format("{:.2} ms", GetFrameTime() * 1000).c_str(), 20, 55, 25, BLACK);
+
 		m_screen->EndFrame();
 	}
 
+	// memory cleanup #yeah
 	for (auto actor : actors)
 	{
 		delete actor;
