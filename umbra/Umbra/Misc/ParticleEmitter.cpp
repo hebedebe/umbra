@@ -1,6 +1,7 @@
 #include "ParticleEmitter.h"
 
 #include <random>
+#include <thread>
 #include <raylib/raymath.h>
 
 #include "Particle.h"
@@ -41,6 +42,12 @@ void ParticleEmitter::Tick(float dt)
 {
 	Actor::Tick(dt);
 
+	m_lifetime -= dt;
+	if (m_lifetime <= 0)
+	{
+		markedForDeletion = true;
+	}
+
 	m_emitterTimer -= dt;
 	if (m_emitterTimer <= 0)
 	{
@@ -56,6 +63,11 @@ void ParticleEmitter::Render()
 {
 	Actor::Render();
 	DrawCircleV(transform.position, 3, YELLOW);
+}
+
+void ParticleEmitter::SetLifeTime(float lifetime)
+{
+	m_lifetime = lifetime;
 }
 
 float random_floattwo(float min, float max) { // put this in mathlib later

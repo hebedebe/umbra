@@ -51,19 +51,24 @@ int Application::Run()
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			RadialParticleEmitter* emitter = new RadialParticleEmitter(ActorTransform{ GetMousePosition() }, particleSystem);
-			emitter->emissionAngles = { 0, 2*PI };
-			emitter->emissionVelocities = { 200, 1000 };
-			emitter->emissionTimer = 0.0f;
-			emitter->particlesPerEmission = 1;
+			emitter->SetLifeTime(1);
 			emitter->attributeModifiers.emplace_back(new ScaleChangeAttributeRandomiser(-1.f, -0.5f));
 			emitter->attributeModifiers.emplace_back(new ScaleAttributeRandomiser(0.1f, 0.2f));
 			emitter->attributeModifiers.emplace_back(new TextureAttributeModifier(&particleTexture));
 			actors.emplace_back(emitter);
 		}
 
-		for (auto actor : actors)
+		for (int i = 0; i < actors.size();)
 		{
+			Actor* actor = actors[i];
 			actor->Tick(dt);
+			if (actor->markedForDeletion)
+			{
+				delete actor;
+				actors.erase(actors.begin() + i);
+				continue;
+			}
+			i++;
 		}
 
 		m_screen->NewFrame();
@@ -74,6 +79,7 @@ int Application::Run()
 		}
 
 		DrawText(std::format("FPS: {}", GetFPS()).c_str(), 20, 20, 25, BLACK);
+		DrawText(std::format("{:.2} ms", GetFrameTime() * 1000).c_str(), 20, 55, 25, BLACK);
 		m_screen->EndFrame();
 	}
 

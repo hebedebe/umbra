@@ -6,6 +6,8 @@ class Actor
 public:
 	ActorTransform transform;
 
+	bool markedForDeletion = false;
+
 public:
 	Actor();
 	Actor(ActorTransform transform);
