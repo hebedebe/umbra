@@ -44,7 +44,7 @@ void Screen::SetClearColor(Color newClearColor)
 }
 
 Screen::Screen()
-	:m_width{ 800 }, m_height{ 600 }, m_title{ "Umbra Application" }, m_clearColor{ RAYWHITE },
+	:m_width{ 800 }, m_height{ 800 }, m_title{ "Umbra Application" }, m_clearColor{ RAYWHITE },
 	m_isUsingAudio{ false }
 {
 }

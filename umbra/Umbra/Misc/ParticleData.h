@@ -19,7 +19,7 @@ struct ParticleData {
 	float scale = 1;
 	float scaleChange = -1.f; // needs implementing
 
-	Color color = RED;
+	Color color = GRAY;
 	Color targetColor = WHITE; // needs implementing
 	float colorLerpSpeed = 0;
 

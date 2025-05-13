@@ -35,7 +35,7 @@ protected:
 	ParticleSystem* m_particleSystem;
 
 private:
-	float m_lifetime;
+	float m_lifetime = 9999999;
 	float m_emitterTimer;
 };
 
@@ -43,7 +43,7 @@ class RadialParticleEmitter : public ParticleEmitter
 {
 public:
 	std::pair<float, float> emissionAngles = {0, 2*PI};
-	std::pair<float, float> emissionVelocities = {200, 1000};
+	std::pair<float, float> emissionVelocities = {20, 50};
 
 public:
 	RadialParticleEmitter(ActorTransform transform, ParticleSystem* particleSystem);

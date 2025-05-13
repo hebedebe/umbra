@@ -3,7 +3,7 @@
 #include <raylib/raylib.h>
 #include <vector>
 
-static std::vector<Texture2D> LoadSpriteSheet(const char* filePath, int frameWidth, int frameHeight)
+std::vector<Texture2D> RenderUtils::LoadSpriteSheet(const char* filePath, int frameWidth, int frameHeight)
 {
     std::vector<Texture2D> frames;
 

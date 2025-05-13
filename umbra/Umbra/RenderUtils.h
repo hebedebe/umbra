@@ -5,5 +5,5 @@
 class RenderUtils
 {
 public:
-    std::vector<Texture2D> LoadSpriteSheet(const char* filePath, int frameWidth, int frameHeight);
+    static std::vector<Texture2D> LoadSpriteSheet(const char* filePath, int frameWidth, int frameHeight);
 };

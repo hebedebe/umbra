@@ -1,5 +1,6 @@
 #include "ParticleEmitter.h"
 
+#include <iostream>
 #include <random>
 #include <thread>
 #include <raylib/raymath.h>

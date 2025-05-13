@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 
+#include "Car.h"
+#include "RenderUtils.h"
 #include "Screen.h"
 #include "Misc/ParticleEmitter.h"
 #include "Misc/ParticleSystem.h"
@@ -41,6 +43,37 @@ int Application::Run()
 
 	std::vector<Actor*> actors;
 
+	ParticleSystem* pSystem = new ParticleSystem;
+	
+
+	std::vector<Texture2D> carSprites = RenderUtils::LoadSpriteSheet("./Umbra/Textures/Tex_BlueCar.png", 16, 16);
+	Car* car = new Car{
+		SpriteStack {
+			carSprites,
+			-3
+		},
+		4,
+		4,
+		360*8,
+		10
+	};
+	car->transform.position = { 400, 400 };
+
+
+	RadialParticleEmitter* pEmitter = new RadialParticleEmitter(car->transform, pSystem);
+	Texture particleTex = LoadTexture("./Umbra/Textures/Tex_DefaultParticle.png");
+	pEmitter->emissionAngles = { 0, 2*PI };
+	pEmitter->emissionAngles = { 30, 50 };
+	pEmitter->particlesPerEmission = 1;
+	pEmitter->emissionTimer = 0.002f;
+	pEmitter->attributeModifiers.emplace_back(new TextureAttributeModifier(&particleTex));
+	pEmitter->attributeModifiers.emplace_back(new ScaleAttributeRandomiser(0.05f, 0.1f));
+	pEmitter->attributeModifiers.emplace_back(new ScaleChangeAttributeRandomiser(-1.f, -0.05f));
+
+	actors.emplace_back(pSystem);
+	actors.emplace_back(pEmitter);
+	actors.emplace_back(car);
+
 	while (!WindowShouldClose())
 	{
 		float dt = GetFrameTime();
@@ -56,6 +89,7 @@ int Application::Run()
 				actors.erase(actors.begin() + i);
 				continue;
 			}
+			pEmitter->transform.position = car->transform.position;
 			i++;
 		}
 
